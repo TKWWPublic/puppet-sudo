@@ -100,21 +100,21 @@ Defaults    secure_path = /usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/pupp
 ## The COMMANDS section may have other options added to it.
 ##
 ## Allow root to run any commands anywhere 
-root	ALL=(ALL) 	ALL
+root	<%= @fqdn %>=(ALL) 	ALL
 
 ## Allows members of the 'sys' group to run networking, software, 
 ## service management apps and more.
 # %sys ALL = NETWORKING, SOFTWARE, SERVICES, STORAGE, DELEGATING, PROCESSES, LOCATE, DRIVERS
 
 ## Allows people in group wheel to run all commands
-%wheel	ALL=(ALL)	ALL
+%wheel	<%= @fqdn %>=(ALL)	ALL
 
 ## Same thing without a password
-# %wheel	ALL=(ALL)	NOPASSWD: ALL
+# %wheel	<%= @fqdn %>=(ALL)	NOPASSWD: ALL
 
 ## Allows members of the users group to mount and unmount the 
 ## cdrom as root
-# %users  ALL=/sbin/mount /mnt/cdrom, /sbin/umount /mnt/cdrom
+# %users  <%= @fqdn %>=/sbin/mount /mnt/cdrom, /sbin/umount /mnt/cdrom
 
 ## Allows members of the users group to shutdown this system
 # %users  localhost=/sbin/shutdown -h now
