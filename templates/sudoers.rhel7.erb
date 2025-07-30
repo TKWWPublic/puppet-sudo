@@ -14,7 +14,7 @@
 ## wildcards for entire domains) or IP addresses instead.
 # Host_Alias     FILESERVERS = fs1, fs2
 # Host_Alias     MAILSERVERS = smtp, smtp2
-Host_Alias     LOCAL = gp-<%= @wp_server_environment%>-<%= @wp_server_country %>-<%= wp_server_role %>-puppet.<%= wp_server_aws_region %>.server.nuptic.com, <%= @fqdn %>, <%= hostname %>
+Host_Alias     LOCAL = gp-<%= @wp_server_environment %>-<%= @wp_server_country %>-<%= @wp_server_role %>-puppet.<%= @wp_server_aws_region %>.server.nuptic.com, <%= @fqdn %>, <%= @hostname %>
 
 ## User Aliases
 ## These aren't often necessary, as you can use regular groups
