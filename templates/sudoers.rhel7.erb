@@ -14,6 +14,7 @@
 ## wildcards for entire domains) or IP addresses instead.
 # Host_Alias     FILESERVERS = fs1, fs2
 # Host_Alias     MAILSERVERS = smtp, smtp2
+Host_Alias     LOCAL = gp-<%= @wp_server_environment %>-<%= @wp_server_country %>-<%= @wp_server_role %>-puppet.<%= @wp_server_aws_region %>.server.nuptic.com, <%= @fqdn %>, <%= @hostname %>, gp-<%= @wp_server_environment %>-<%= @wp_server_country %>-<%= @wp_server_role %>-sec___instanceid___.<%= @wp_server_aws_region %>.server.nuptic.com, gp-<%= @wp_server_environment %>-<%= @wp_server_country %>-<%= @wp_server_role %>-___instanceid___.<%= @wp_server_aws_region %>.server.nuptic.com
 
 ## User Aliases
 ## These aren't often necessary, as you can use regular groups
@@ -100,21 +101,21 @@ Defaults    secure_path = /usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/pupp
 ## The COMMANDS section may have other options added to it.
 ##
 ## Allow root to run any commands anywhere 
-root	ALL=(ALL) 	ALL
+root	LOCAL=(ALL) 	ALL
 
 ## Allows members of the 'sys' group to run networking, software, 
 ## service management apps and more.
-# %sys ALL = NETWORKING, SOFTWARE, SERVICES, STORAGE, DELEGATING, PROCESSES, LOCATE, DRIVERS
+# %sys LOCAL = NETWORKING, SOFTWARE, SERVICES, STORAGE, DELEGATING, PROCESSES, LOCATE, DRIVERS
 
 ## Allows people in group wheel to run all commands
-%wheel	ALL=(ALL)	ALL
+%wheel	LOCAL=(ALL)	ALL
 
 ## Same thing without a password
-# %wheel	ALL=(ALL)	NOPASSWD: ALL
+# %wheel	LOCAL=(ALL)	NOPASSWD: ALL
 
 ## Allows members of the users group to mount and unmount the 
 ## cdrom as root
-# %users  ALL=/sbin/mount /mnt/cdrom, /sbin/umount /mnt/cdrom
+# %users  LOCAL=/sbin/mount /mnt/cdrom, /sbin/umount /mnt/cdrom
 
 ## Allows members of the users group to shutdown this system
 # %users  localhost=/sbin/shutdown -h now
